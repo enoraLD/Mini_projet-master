@@ -13,7 +13,6 @@
                     <th> # </th>
                     <th>Nom</th>
                     <th>Symbole</th>
-                    <th>Categorie</th>
                     <th>Actions </th>
 
                 </tr>
@@ -30,7 +29,6 @@
 {#                                                                </span>#}
 {#                                                            </td>#}
                         <td>{{crypto.symbole}} </td>
-                        <td>{{crypto.categorie}} </td>
                         <td>
                             <a href="{{ path('crypto_edit', {'id': crypto.id}) }}">
                             <i class="material-icons blue-text">edit</i>
@@ -58,12 +56,13 @@
                 <th>Actions</th>
 
             </tr>
-            {% set i = 1 %}
+            {% set j = 1 %}
             {% for user in users %}
                 <tr>
-                    <td>{{i}}</td>
+                    <td>{{j}}</td>
                     <td>{{user.username}}</td>
                     <td>
+
                                     <span class="badge blue">
                                         admin.
                                     </span>
@@ -73,6 +72,7 @@
                     </td>
 
                 </tr>
+                {% set j = j+1 %}
             {% endfor %}
 
         </table>

@@ -59,6 +59,11 @@ class Crypto
      */
     private $commentaires;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $image;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
@@ -68,6 +73,7 @@ class Crypto
     {
         return $this->id;
     }
+
 
     public function getNom(): ?string
     {
@@ -179,6 +185,18 @@ class Crypto
                 $commentaire->setCrypto(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
