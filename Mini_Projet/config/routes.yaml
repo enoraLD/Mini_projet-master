@@ -1,0 +1,51 @@
+homepage:
+    path: /
+    controller: App\Controller\CryptoController::afficher
+
+index :
+    path: index
+    controller: App\Controller\CryptoController::index
+
+login :
+    path: login
+    controller: App\Controller\CryptoController::login
+
+logout :
+    path: logout
+    controller: App\Controller\CryptoController::logout
+
+register :
+    path: register
+    controller : App\Controller\RegistrationController::register
+
+admin :
+    path: /admin
+    controller : App\Controller\AdminController::admin
+
+crypto_show:
+   path: /show
+   controller: App\Controller\CryptoController::show
+
+#commentaire_add:
+#    path:
+#    controller:
+
+#crypto_fav:
+#    path:
+#    controller:
+
+crypto_add:
+    path: /add
+    controller : App\Controller\CryptoController::add
+
+crypto_delete:
+    path: /delete/{id}
+    controller: App\Controller\CryptoController::delete
+    requirements:
+        id: '\d+'
+
+crypto_edit:
+    path: /edit/{id}
+    controller: App\Controller\CryptoController::edit
+    requirements:
+        id: '\d+'

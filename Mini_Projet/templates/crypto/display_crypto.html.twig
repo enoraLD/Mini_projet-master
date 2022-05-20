@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Accueil | {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-3">
+        <h2> Cours des Cryptomonnaies </h2>
+        <table class="table table-striped">
+            <br>
+            <tr>
+                <th> # </th>
+                <th>Nom</th>
+                <th>Symbole</th>
+                <th>Prix</th>
+                <th>Categorie</th>
+                <th>Description</th>
+                <th>MarketCup</th>
+                <th>Followers</th>
+
+            </tr>
+
+
+            {% for crypto in cryptos %}
+                <tr>
+                    <td>{{crypto.id}}</td>
+                    <td>{{crypto.nom}}</td>
+                    <td>{{crypto.symbole}} </td>
+                    <td>{{crypto.prix}}</td>
+                    <td>{{crypto.categorie}} </td>
+                    <td>{{crypto.description}}</td>
+                    <td>{{crypto.marketcup }}</td>
+                    <td>{{crypto.nbFollowers}}</td>
+                </tr>
+
+
+
+            {% endfor %}
+
+        </table>
+    </div>
+{% endblock %}

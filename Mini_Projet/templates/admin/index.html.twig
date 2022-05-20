@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin. | {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="admin-page">
+        <div class="container">
+            <table class="table table-striped">
+                <a href="{{ path('crypto_add') }}" class="btn btn blue darken-4" style="float: right">Ajouter</a>
+                <h3>Cryptomonnaie</h3>
+                <br>
+                <tr>
+                    <th> # </th>
+                    <th>Nom</th>
+                    <th>Symbole</th>
+                    <th>Categorie</th>
+                    <th>Actions </th>
+
+                </tr>
+
+                {% set i = 1 %}
+                {% for crypto in cryptos %}
+                    <tr>
+                        <td>{{i}}</td>
+{#                        <a href="{{ path('crypto_show', {'url': crypto.url}) }}" target="_blank"></a>#}
+                        <td>{{crypto.nom}}</td>
+{#                        <td>#}
+{#                                                                <span class="badge {{ crypto.visible ? 'blue' : 'red' }}">#}
+{#                                                                    {{ crypto.visible ? 'oui' : 'non' }}#}
+{#                                                                </span>#}
+{#                                                            </td>#}
+                        <td>{{crypto.symbole}} </td>
+                        <td>{{crypto.categorie}} </td>
+                        <td>
+                            <a href="{{ path('crypto_edit', {'id': crypto.id}) }}">
+                            <i class="material-icons blue-text">edit</i>
+                            </a>
+
+                            <a href="{{ path('crypto_delete', {'id': crypto.id}) }}">
+                            <i class="material-icons red-text">delete</i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% set i = i+1 %}
+                    {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <h2> Utilisateurs </h2>
+        <table class="table table-striped">
+            <br>
+            <tr>
+                <th> # </th>
+                <th>Username</th>
+                <th>Rôle</th>
+                <th>Actions</th>
+
+            </tr>
+            {% set i = 1 %}
+            {% for user in users %}
+                <tr>
+                    <td>{{i}}</td>
+                    <td>{{user.username}}</td>
+                    <td>
+                                    <span class="badge blue">
+                                        admin.
+                                    </span>
+                    </td>
+                    <td>
+                        <a href=""><i class="material-icons red-text">delete</i></a>
+                    </td>
+
+                </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+
+{% endblock %}
