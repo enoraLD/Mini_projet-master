@@ -9,7 +9,7 @@
             <br>
             <tr>
                 <th> # </th>
-{#                <th> Image </th>#}
+                <th> Image </th>
                 <th>Nom</th>
                 <th>Symbole</th>
                 <th>Prix</th>
@@ -24,7 +24,7 @@
             {% for crypto in cryptos %}
                 <tr>
                     <td>{{crypto.id}}</td>
-{#                    <td>{{crypto.image}}</td>#}
+                    <td> <img alt="crypto icon" src={{crypto.image}} width="30" height="30"/></td>
                     <td>{{crypto.nom}}</td>
                     <td>{{crypto.symbole}} </td>
                     <td>{{crypto.prix}}</td>
