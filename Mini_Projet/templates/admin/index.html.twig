@@ -6,7 +6,6 @@
     <div class="admin-page">
         <div class="container">
             <table class="table table-striped">
-                <a href="{{ path('crypto_add') }}" class="btn btn blue darken-4" style="float: right">Ajouter</a>
 
     <div class="container mt-3">
         <h2> Utilisateurs </h2>
@@ -19,10 +18,9 @@
                 <th>Actions</th>
 
             </tr>
-            {% set j = 1 %}
             {% for user in users %}
                 <tr>
-                    <td>{{j}}</td>
+                    <td>{{user.id}}</td>
                     <td>{{user.username}}</td>
                     <td>
                               {% for elem in user.roles %}
@@ -39,11 +37,11 @@
 
                     </td>
                     <td>
-                        <a href=""><i class="material-icons red-text">delete</i></a>
+                        <a href="/supprimer_uti/{{user.id}}" class ="btn btn-danger" role="buton">supprimer</a>
+                        <a href="/ajouter_droit/{{user.id}}" class="btn btn-primary" role="buton">ajouter rôle</a>
                     </td>
 
                 </tr>
-                {% set j = j+1 %}
             {% endfor %}
 
         </table>

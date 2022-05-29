@@ -74,7 +74,7 @@ class CryptoController extends AbstractController
 
         if (!$crypto) {
             throw $this->createNotFoundException(
-                "L'événement avec l'id = {$id} n'existe pas!"
+                "La cryptomonnaie avec l'id = {$id} n'existe pas!"
             );
         }
 
@@ -131,6 +131,7 @@ class CryptoController extends AbstractController
             $connection=$em->getConnection();
 
             $temp = $this->getDoctrine()->getRepository(Crypto::class)->findBy($arguments);
+
             $cryptos = array();
             $cryptos2 = array();
 
@@ -151,7 +152,7 @@ class CryptoController extends AbstractController
                 }
             }
 
-            if($minP !=null && $maxP != null){
+            if(!empty($minP) && !empty($maxP)){
                 foreach ($temp as $crypto) {
                     if ($crypto->getPrix() <= $maxP && $crypto->getPrix() >= $minP){
                         $cryptos2[] = $crypto;

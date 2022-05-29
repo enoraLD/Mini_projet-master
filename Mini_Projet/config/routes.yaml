@@ -10,9 +10,9 @@ login :
     path: login
     controller: App\Controller\CryptoController::login
 
-logout :
-    path: logout
-    controller: App\Controller\CryptoController::logout
+#logout :
+#    path: logout
+#    controller: App\Controller\CryptoController::logout
 
 register :
     path: register
@@ -26,6 +26,13 @@ crypto_show:
    path: /show/{id}
    controller: App\Controller\CryptoController::show
 
+ajouter_droit:
+   path : /ajouter_droit
+   controller : App\Controller\AdminController::ajouter_droit
+
+supprimer_uti:
+   path : /supprimer_uti/{id}
+   controller : App\Controller\AdminController::supprimer_uti
 
 #commentaire_add:
 #    path:
