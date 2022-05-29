@@ -16,7 +16,7 @@ Pour installer le projet, il vous suffit de faire un clone de ce répertoire Git
 Toutes les dépendances sont désormais installées. 
 
 ### Base de données
-Vous devez configurer le **.env** et en remplaçant les identifiants par ceux de votre base de données.
+Vous devez configurer le **.env** et en remplaçant les identifiants par ceux de votre base de données. Assurez-vous d'être bien dans le dossier Mini_Projet pour exécuter l'ensemble des ces commandes. 
 
 Par défaut, la variable _APP_ENV_ est en _prod_, vous n'aurez donc pas accès au profiler Symfony (débug). Si vous souhaitez activer le profiler, merci de passer _APP_ENV_ à _dev_.
 
