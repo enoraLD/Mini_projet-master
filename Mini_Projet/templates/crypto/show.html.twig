@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="hero p-4">
+        <div class="container">
+                <col class="row">
+                <col class="table table-striped">
+                            <div class="col-sm-12 col-lg-6 mt-3">
+                            <img alt="crypto icon" src={{crypto.image}} width="50" height="50"/>
+                            </div>
+
+                            <h2>{{ crypto.nom }}</h2>
+
+                            <br>
+                            <a href="/add/favoris/{{crypto.id}}" class="btn btn-primary" role="button">Ajouter aux favoris</a>
+                            <br>
+                            <p class="lead">
+                                Prix actuel : {{ crypto.prix}}
+                                <br>
+                                Marketcup : {{ crypto.marketcup }}
+                            </p>
+                            <p class="card-text text-muted">
+                                Description :  {{ crypto.description }}
+                            </p>
+{#                </col>#}
+{#                <div class="col-sm-12 col-lg-6">#}
+{#                    <img src="{{ event.picture }}" alt="" class="img-fluid">#}
+{#                </div>#}
+                <div class="col-sm-12 col-lg-6 mt-3">
+                                <h2> Commentaires </h2>
+
+                                <h3>
+                                    <a href="/add/commentaire/{{crypto.id}}" class="btn btn-primary" role="button">Ajouter commentaire</a>
+                                </h3>
+
+                            {% for com in commentaires %}
+                            <div>
+                                <p>
+                                    {{com.texte}}
+                                    {{com.date|date("d/m/Y")}}
+                                    {{com.user.username}}
+                                </p>
+
+                            </div>
+
+                            {% endfor %}
+                </div>
+
+
+{#                <div>#}
+{#                    <a href="/add/commentaire/{{crypto.id}}" class="btn btn-primary" role="button">Ajouter commentaire</a>#}
+{#                </div>#}
+
+{#                <div>#}
+{#                        <a href="/add/favoris/{{crypto.id}}" class="btn btn-primary" role="button">Ajouter aux favoris</a>#}
+{#                </div>#}
+            </div>
+        </div>
+    </div>
+{% endblock %}

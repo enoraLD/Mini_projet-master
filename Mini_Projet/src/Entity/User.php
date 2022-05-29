@@ -43,9 +43,15 @@ class User implements UserInterface
      */
     private $commentaires;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Crypto::class)
+     */
+    private $crypto_fav;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
+        $this->crypto_fav = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -150,6 +156,30 @@ class User implements UserInterface
                 $commentaire->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Crypto[]
+     */
+    public function getCryptoFav(): Collection
+    {
+        return $this->crypto_fav;
+    }
+
+    public function addCryptoFav(Crypto $cryptoFav): self
+    {
+        if (!$this->crypto_fav->contains($cryptoFav)) {
+            $this->crypto_fav[] = $cryptoFav;
+        }
+
+        return $this;
+    }
+
+    public function removeCryptoFav(Crypto $cryptoFav): self
+    {
+        $this->crypto_fav->removeElement($cryptoFav);
 
         return $this;
     }

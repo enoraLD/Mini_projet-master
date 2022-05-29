@@ -34,4 +34,5 @@ class AdminController extends AbstractController
             'users' => $users
         ]);
     }
+
 }

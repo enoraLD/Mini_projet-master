@@ -25,8 +25,7 @@ admin :
 crypto_show:
    path: /show/{id}
    controller: App\Controller\CryptoController::show
-   requirements :
-      id : '\d'
+
 
 #commentaire_add:
 #    path:
