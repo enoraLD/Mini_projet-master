@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Crypto;
 use App\Entity\User;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -44,7 +45,7 @@ class AdminController extends AbstractController
     /**
      * @Route("/supprimer_uti/{id}", name="admin")
      */
-    public function supprimer_uti(Request $request, User $user, EntityManager $em) : Response
+    public function supprimer_uti($id, EntityManagerInterface $em) : Response
     {
 
         $user = $this->getDoctrine()->getRepository(User::class)->find($id);

@@ -10,9 +10,9 @@ login :
     path: login
     controller: App\Controller\CryptoController::login
 
-#logout :
-#    path: logout
-#    controller: App\Controller\CryptoController::logout
+logout :
+    path: logout
+    controller: App\Controller\SecurityController::logout
 
 register :
     path: register
