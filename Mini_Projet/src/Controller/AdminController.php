@@ -36,13 +36,6 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/ajouter_droit/{id}", name="admin")
-     */
-    public function ajouter_droit(){
-
-    }
-
-    /**
      * @Route("/supprimer_uti/{id}", name="admin")
      */
     public function supprimer_uti($id, EntityManagerInterface $em) : Response

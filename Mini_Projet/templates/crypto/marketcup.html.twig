@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Accueil | {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-3">
+{#        <h2> Cours des Cryptomonnaies </h2>#}
+        <table class="table table-striped">
+            <br>
+            <tr>
+
+                <th>Classe</th>
+                <th>Nb cryptos</th>
+
+            </tr>
+            {% set j = 0 %}
+            {% for c in classe %}
+                <tr>
+                    {% if j == 3 %}
+                        <td><a href="affichermarket/3"> > {{c}} </a> </td>
+                    {% else %}
+                        <td><a href="affichermarket/{{c}}"> < {{c}} </a> </td>
+                    {% endif %}
+                    <td>{{nb[j]}}</td>
+                </tr>
+                {% set j = j+1 %}
+            {% endfor %}
+
+        </table>
+    </div>
+{% endblock %}

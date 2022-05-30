@@ -123,12 +123,6 @@ class CryptoController extends AbstractController
                 $arguments['categorie'] = $cat;
             }
 
-//            if($minP != null && $maxP != null){
-//                $arguments['minP'] = $minP;
-//            }
-//
-
-            $connection=$em->getConnection();
 
             $temp = $this->getDoctrine()->getRepository(Crypto::class)->findBy($arguments);
 
@@ -211,6 +205,88 @@ class CryptoController extends AbstractController
         return $this->render("crypto/filtreForm.html.twig",[
         'RechercheForm' => $form->createView()]);
 
+    }
+
+    /**
+     * @Route("/classe", name="classe")
+     */
+    public function classe(EntityManagerInterface $em, Request $request): Response
+    {
+
+        $nbmarket = array();
+        $nbCryptos = array();
+
+        $nbmarket[0] = 50000000;
+        $nbmarket[1] = 500000000;
+        $nbmarket[2] = 1000000000;
+        $nbmarket[3] = 1000000000 ;
+
+        for($i =0; $i<4;$i++){
+            $nbCryptos[$i] = 0;
+        }
+
+        $cryptos = $this->getDoctrine()->getRepository(Crypto::class)->findAll();
+        foreach ($cryptos as $crypto){
+            if($crypto->getMarketcup() >= 1000000000){
+                $nbCryptos[3] ++;
+            }
+            elseif($crypto->getMarketcup() >= 500000000){
+                $nbCryptos[2] ++;
+            }
+            elseif($crypto->getMarketcup() >= 50000000){
+                $nbCryptos[1]++;
+            }
+            else{
+                $nbCryptos[0] ++;
+            }
+        }
+
+
+        return $this->render('crypto/marketcup.html.twig', ['classe' => $nbmarket,
+            'nb' => $nbCryptos]);
+    }
+
+    /**
+     * @Route("/affichermarket/{valeur}", name="affichermarket")
+     */
+    public function affichermarket($valeur): Response
+    {
+        $cryptos = $this->getDoctrine()->getRepository(Crypto::class)->findAll();
+
+        $cryptos2 = array();
+
+
+        if($valeur!=3) {
+            foreach ($cryptos as $crypto) {
+                if($valeur==50000000) {
+                    if ($crypto->getMarketcup() < $valeur) {
+                        $cryptos2[] = $crypto;
+                    }
+                }
+                elseif ($valeur==500000000){
+                    if ($crypto->getMarketcup() < $valeur && $crypto->getMarketcup() >= 50000000) {
+                        $cryptos2[] = $crypto;
+                    }
+                }
+                elseif($valeur==1000000000) {
+                    if ($crypto->getMarketcup() < $valeur && $crypto->getMarketcup() >= 500000000) {
+                        $cryptos2[] = $crypto;
+                    }
+                }
+
+            }
+        }else{
+            foreach ($cryptos as $crypto) {
+                if ($crypto->getMarketcup() >= 1000000000) {
+                    $cryptos2[] = $crypto;
+                }
+
+            }
+        }
+
+        return $this->render('crypto/display_crypto.html.twig', [
+            'cryptos' => $cryptos2
+        ]);
     }
 
 }

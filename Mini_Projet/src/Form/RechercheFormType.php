@@ -15,8 +15,8 @@ class RechercheFormType extends AbstractType
             ->add('prixMin',null, array('required'=>false))
             ->add('prixMax', null, array('required'=>false))
             ->add('categorie', null, array('required'=>false))
-//            ->add('minNbFollowers', null, array('required'=>false))
-//            ->add('maxNbFollowers', null, array('required'=>false))
+            ->add('minNbFollowers', null, array('required'=>false))
+            ->add('maxNbFollowers', null, array('required'=>false))
         ;
     }
 
